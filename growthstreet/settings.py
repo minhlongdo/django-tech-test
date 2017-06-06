@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'loans',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -106,5 +107,5 @@ STATIC_URL = '/static/'
 REGISTRATION_OPEN = True
 ACCOUNT_ACTIVATION_DATS = 7
 REGISTRATION_AUTO_LOGIN = True
-LOGIN_REDIRECT_URL = '/search/'
+LOGIN_REDIRECT_URL = '/loans/request/'
 LOGIN_URL = '/accounts/login/'
