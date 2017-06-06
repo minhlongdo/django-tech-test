@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from registration.backends.simple.views import RegistrationView
 
-from loans.forms import BorrowerRegistrationForm
+from loans.forms import BorrowerRegistrationForm, LoanForm
 from loans.models import Borrower
 
 from django.conf import settings
@@ -28,4 +28,6 @@ class BorrowerRegistrationView(RegistrationView):
 
 @login_required(redirect_field_name=settings.LOGIN_URL)
 def render_request_loan(request):
-    return render(request, 'loans/request_loan.html')
+    form = LoanForm()
+    return render(request, 'loans/request_loan.html',
+                  {'form': form})
