@@ -27,3 +27,19 @@ class Loan(models.Model):
 
         if not self.reason:
             raise ValidationError({'reason': 'Loan reason cannot be empty'})
+
+
+BUSINESS_SECTOR = [
+    ('retail', 'Retail'),
+    ('professional_services', 'Professional Services'),
+    ('food_drinks', 'Food & Drinks'),
+    ('entertainment', 'Entertainment')
+]
+
+
+class Business(models.Model):
+    owner = models.ForeignKey(Borrower)
+    name = models.CharField(max_length=255, blank=False)
+    address = models.CharField(max_length=255)
+    registered_company = models.CharField(max_length=8, blank=False)
+    business_sector = models.TextField(choices=BUSINESS_SECTOR, blank=True)

@@ -2,7 +2,7 @@ from django.core.exceptions import ValidationError
 from registration.forms import RegistrationFormUniqueEmail
 from django import forms
 
-from loans.models import Loan
+from loans.models import Loan, Business, BUSINESS_SECTOR
 
 
 class BorrowerRegistrationForm(RegistrationFormUniqueEmail):
@@ -29,3 +29,13 @@ class LoanForm(forms.ModelForm):
             raise ValidationError('Number of days has to be greater than 0')
 
         return days
+
+
+class BusinessForm(forms.ModelForm):
+
+    class Meta:
+        model = Business
+        exclude = ('owner',)
+        widgets = {
+            'business_sector': forms.Select(choices=BUSINESS_SECTOR)
+        }
