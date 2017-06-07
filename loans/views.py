@@ -33,11 +33,11 @@ class BorrowerRegistrationView(RegistrationView):
 @login_required(redirect_field_name=settings.LOGIN_URL)
 def request_loan(request):
     if request.method == 'GET':
-        form = LoanForm()
+        form = LoanForm(user=request.user)
         return render(request, 'loans/request_loan.html',
                       {'form': form})
     elif request.method == 'POST':
-        form = LoanForm(request.POST)
+        form = LoanForm(request.POST, user=request.user)
 
         if form.is_valid():
             loan_request = form.save(commit=False)
@@ -46,8 +46,7 @@ def request_loan(request):
 
             return HttpResponseRedirect('loans/request/')
         else:
-            print("error")
-            form = LoanForm()
+            form = LoanForm(user=request.user)
             return render(request, 'loans/request_loan.html', {'form': form})
 
 
