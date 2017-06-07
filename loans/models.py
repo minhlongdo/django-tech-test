@@ -15,12 +15,12 @@ class Loan(models.Model):
     borrower = models.ForeignKey(Borrower, on_delete=models.PROTECT)
     amount = MoneyField(max_digits=8, decimal_places=2,
                         max_length=6, default_currency='GBP')
-    days = models.IntegerField()
+    days = models.IntegerField(default=0)
     reason = models.TextField(blank=False)
 
     def clean(self):
-        if self.days <= 0:
-            raise ValidationError({'days': 'Repayment date cannot be 0'})
+        if self.days is None or self.days <= 0:
+            raise ValidationError({'days': 'Repayment day cannot be 0'})
 
         if not (10000.00 <= float(self.amount) <= 100000.00):
             raise ValidationError({'amount': 'Loan request has to be between 10000.00 GBP and 100000.00 GBP'})

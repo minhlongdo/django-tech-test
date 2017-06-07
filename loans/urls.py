@@ -1,7 +1,7 @@
 from django.conf.urls import url
-from .views import render_request_loan
+from .views import request_loan
 
 
 urlpatterns = [
-    url(r'request/', render_request_loan, name='request_loan')
+    url(r'request/', request_loan, name='request_loan')
 ]
