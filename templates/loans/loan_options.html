@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block title %}
+    Request Option
+{% endblock %}
+
+
+{% block content %}
+    {% buttons %}
+        <button type="button" class="btn btn-primary">
+            <a href="{% url 'request_loan' %}">Request Loan</a>
+        </button>
+    {% endbuttons %}
+{% endblock %}

@@ -50,3 +50,8 @@ def request_loan(request):
     else:
         form = LoanForm
         return render(request, 'loans/request_loan.html', {'form': form})
+
+
+@login_required(redirect_field_name=settings.LOGIN_URL)
+def render_request_loan(request):
+    return render(request, 'loans/loan_options.html')

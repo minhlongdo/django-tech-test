@@ -108,5 +108,5 @@ STATIC_URL = '/static/'
 REGISTRATION_OPEN = True
 ACCOUNT_ACTIVATION_DATS = 7
 REGISTRATION_AUTO_LOGIN = True
-LOGIN_REDIRECT_URL = '/loans/request/'
+LOGIN_REDIRECT_URL = '/loans/options/'
 LOGIN_URL = '/accounts/login/'
